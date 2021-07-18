@@ -38,7 +38,10 @@ try {
     const fileString = fs.readFileSync(absolutePath).toString()
     const { meta: { size }, frames } = JSON.parse(fileString)
     const simplifiedFrames = simplifyFrames(frames)
-    const formatted = JSON.stringify({ size, frames: simplifiedFrames })
+    const formatted = JSON.stringify({
+        size: { width: size.w, height: size.h },
+        frames: simplifiedFrames
+    })
     fs.writeFileSync(absolutePath, formatted)
 } catch (error) {
     if (error.code === 'ENOENT') {

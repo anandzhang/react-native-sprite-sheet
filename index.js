@@ -1,23 +1,10 @@
 import React from 'react'
-import { Image, Platform, View } from 'react-native'
-
-const resolveAssetSource = (source) => {
-    // 使用 react-native-web-image-loader 插件
-    // web 版解析的图片资源就是一个对象 { width, height, uri }
-    if (Platform.OS === 'web') {
-        return source
-    }
-    return Image.resolveAssetSource(source)
-}
+import { Image, View } from 'react-native'
 
 const SpriteImage = ({ source, data, name, width, height }) => {
-    // 精灵图集大小
-    const {
-        width: sourceWidth,
-        height: sourceHeight
-    } = resolveAssetSource(source)
+    const { size, frames } = data
     // 精灵图集中该图片
-    const { x, y, width: frameWidth, height: frameHeight } = data[name]
+    const { x, y, width: frameWidth, height: frameHeight } = frames[name]
     // 图片真实宽高与需渲染宽高的缩放比例
     const scaleX = width / frameWidth
     const scaleY = height / frameHeight
@@ -44,8 +31,8 @@ const SpriteImage = ({ source, data, name, width, height }) => {
                     source={source}
                     style={{
                         resizeMode: 'cover',
-                        width: sourceWidth,
-                        height: sourceHeight,
+                        width: size.width,
+                        height: size.height,
                         transform: [
                             { translateX: -x, },
                             { translateY: -y }
