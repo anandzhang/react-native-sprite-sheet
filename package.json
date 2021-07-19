@@ -1,6 +1,6 @@
 {
   "name": "react-native-sprite-sheet",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "bin": "./format.js",
   "main": "index.js",
   "repository": "https://github.com/anandzhang/react-native-sprite-sheet.git",
