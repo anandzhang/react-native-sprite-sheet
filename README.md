@@ -21,8 +21,7 @@ const Icon = () => (
     source={require('./icon.png')}
     data={require('./icon.json')}
     name='success'
-    width={20}
-    height={20}
+    style={{ width: 20, height: 20}}
   />
 )
 
